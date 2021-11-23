@@ -1,0 +1,10 @@
+
+.table{
+    display: flex;
+    justify-content: center;
+
+}
+
+app-dynamic-table{
+    width: 70%
+}
