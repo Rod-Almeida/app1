@@ -15,13 +15,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import { SideMenuComponent } from './side-menu/side-menu.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
     HomeComponent,
-    DynamicTableComponent
+    DynamicTableComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import {MatSortModule} from '@angular/material/sort';
     MatInputModule,
     MatPaginatorModule,
     MatSortModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
