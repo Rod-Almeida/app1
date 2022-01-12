@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, OnInit, Component, ViewChild, Input, Output} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,10 +10,11 @@ import { UserData, FRUITS, NAMES} from './../interfaces/dataTable'
   templateUrl: './dynamic-table.component.html',
   styleUrls: ['./dynamic-table.component.css']
 })
-export class DynamicTableComponent implements AfterViewInit {
+export class DynamicTableComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
-  dataSource: MatTableDataSource<UserData>;
+  @Input() displayedColumns!: string[];
+  @Input() users!: [];
+  dataSource: any;
 
   
   @ViewChild(MatPaginator)
@@ -22,13 +23,14 @@ export class DynamicTableComponent implements AfterViewInit {
   sort!: MatSort;
 
   constructor() {
-    
-    // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+    this.dataSource = new MatTableDataSource();
 
+  }
+  
+  ngOnInit() {
+    this.dataSource = new MatTableDataSource(this.users);
+    console.log('users: ', this.users)
   }
 
   ngAfterViewInit() {
@@ -43,23 +45,8 @@ export class DynamicTableComponent implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
 }
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-  };
-}
 
 
 

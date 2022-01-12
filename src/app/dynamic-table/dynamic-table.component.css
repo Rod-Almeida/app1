@@ -10,3 +10,27 @@ table {
   td, th {
     width: 25%;
   }
+  
+.paginator{
+  background-color: #d12424
+}
+
+.paginator {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 0 8px;
+  flex-wrap: wrap-reverse;
+  width: 100%;
+  background-color: #d12424
+}
+
+  mat-paginator-container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 0 8px;
+    flex-wrap: wrap-reverse;
+    width: 100%;
+    background-color: #d12424
+  }
