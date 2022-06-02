@@ -1,0 +1,35 @@
+<div class="breakingBadSection">
+    <div class="filterSection">
+
+        <div>
+        <mat-form-field  class="filter" appearance="standard">
+            <mat-label>Procurando alguma coisa?</mat-label>
+            <input matInput (input)="filterCharactersList()" placeholder="dá uma filtrada aqui..." #filterInput>
+        </mat-form-field>
+
+    </div>
+
+    </div>
+    <div class="container">
+        <mat-card class="card" *ngFor="let character of filteredList; let i = index">
+            <mat-card-header>
+            <mat-card-title>{{character.name}}</mat-card-title>
+            <mat-card-subtitle>{{character.nickname}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="{{character.img}}" alt="Photo of the character">
+            <mat-card-content>
+            <p>
+                {{character.status}}
+            </p>
+            <p *ngFor="let occupation of character.occupation">
+               - {{occupation}}
+            </p>
+            </mat-card-content>
+            <mat-card-actions>
+            <button  mat-raised-button color="primary" (click)="delete(i)">Excluir</button>
+            <button  mat-raised-button color="primary">Detalhes</button>
+            </mat-card-actions>
+        </mat-card>
+    
+    </div>
+</div>

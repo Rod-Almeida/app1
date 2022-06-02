@@ -1,36 +1,45 @@
 table {
     width: 100%;
+    overflow-x: scroll;
   }
-  
+  .mat-elevation-z8{
+    overflow-x: scroll;
+  }
   .mat-form-field {
     font-size: 14px;
     width: 100%;
   }
-  
+  img {
+    height: 80px;
+    border-radius: 20%;
+    margin: 10px;
+  }
   td, th {
-    width: 25%;
+    min-width: 200px;
   }
   
 .paginator{
   background-color: #d12424
 }
 
-.paginator {
+
+#paginator.pagination mat-paginator-container {
+  display: none;
+}
+
+#paginator .mat-paginator-outer-container .mat-paginator-container {
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: flex-start;
   padding: 0 8px;
   flex-wrap: wrap-reverse;
   width: 100%;
-  background-color: #d12424
 }
 
-  mat-paginator-container {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding: 0 8px;
-    flex-wrap: wrap-reverse;
-    width: 100%;
-    background-color: #d12424
-  }
+#paginator .mat-paginator-outer-container .mat-paginator-container .mat-paginator-range-actions {
+  display: none;
+  align-items: center;
+}
+.material-icons{
+  margin-right: 10px;
+}

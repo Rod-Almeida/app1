@@ -1,0 +1,44 @@
+.card {
+    max-width: 200px;
+    min-width: 100px;
+    margin: 2em;
+    max-height: 470px;
+  }
+  .container{
+      width: 100%;
+      margin: auto;
+    justify-content: space-evenly;
+     display: flex;
+    flex-wrap: wrap;
+  }
+  mat-card-content{
+    max-height: 80px;
+    overflow-y: auto;
+  }
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+  .breakingBadSection{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+     }
+
+  img {
+     
+      margin: 0 -16px 16px -16px;
+      height: 250px;
+  }
+
+  .filterSection{
+    width: 100%;
+    display: block;
+    justify-content: center;
+    text-align: center;
+  }
+  .filter{
+    width:90%;
+  }
+

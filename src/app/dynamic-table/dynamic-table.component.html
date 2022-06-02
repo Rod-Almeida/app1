@@ -3,16 +3,33 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="dá uma filtrada aqui..." #input>
 </mat-form-field>
 
-  
+
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
   
       <!-- ID Column -->
       <div *ngFor="let row of displayedColumns; let iKey = index">
-      <ng-container matColumnDef="{{displayedColumns[iKey]}}">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> {{displayedColumns[iKey]}} </th>
-        <td mat-cell *matCellDef="let element"> {{element[row]}} </td>
+        <ng-container [ngSwitch]="row" >
+          <ng-container *ngSwitchCase="'img'"  matColumnDef="{{displayedColumns[iKey]}}" [sticky]="true">
+            <th  mat-header-cell *matHeaderCellDef mat-sort-header > {{headers[iKey]}}  </th>
+            <td mat-cell *matCellDef="let element"><img src="{{element[row]}}">  </td>
+          </ng-container>
+
+        <ng-container *ngSwitchCase="'actions'" matColumnDef="{{displayedColumns[iKey]}}" >
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> action </th>
+          <td mat-cell *matCellDef="let element"> 
+            <span class="material-icons">edit</span>
+            <span class="material-icons">delete</span>
+          </td>
+        </ng-container>
+
+        <ng-container *ngSwitchDefault="" matColumnDef="{{displayedColumns[iKey]}}" >
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> {{headers[iKey]}}  </th>
+          <td mat-cell *matCellDef="let element"> {{element[row]}} </td>
+        </ng-container>
+
       </ng-container>
+
     </div>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -24,6 +41,6 @@
       </tr>
     </table>
   
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    <mat-paginator [pageSizeOptions]="pageSizeOptions" aria-label="Select page of content"></mat-paginator>
   </div>
   

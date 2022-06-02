@@ -1,0 +1,6 @@
+<div class="table" *ngIf="!!content">
+<app-dynamic-table [displayedColumns]="displayedColumns" [content]="content" [headers]="headers"></app-dynamic-table>
+</div>
+<div class="cards">
+    <app-breaking-bad (sendTableInfo)="createTableContent($event)"></app-breaking-bad>
+</div>

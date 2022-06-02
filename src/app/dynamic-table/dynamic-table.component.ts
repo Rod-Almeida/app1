@@ -1,4 +1,4 @@
-import {AfterViewInit, OnInit, Component, ViewChild, Input, Output} from '@angular/core';
+import {AfterViewInit, OnInit, OnChanges, Component, ViewChild, Input, Output, ViewEncapsulation, SimpleChanges} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,12 +10,14 @@ import { UserData, FRUITS, NAMES} from './../interfaces/dataTable'
   templateUrl: './dynamic-table.component.html',
   styleUrls: ['./dynamic-table.component.css']
 })
-export class DynamicTableComponent implements OnInit, AfterViewInit {
+export class DynamicTableComponent implements OnInit, AfterViewInit, OnChanges {
 
-  @Input() displayedColumns!: string[];
-  @Input() users!: [];
+  @Input() displayedColumns!: any[];
+  @Input() content!: any[];
+  @Input() headers!: any[];
   dataSource: any;
-
+  pageSizeOptions = [3, 10, 25, 100];
+  hidePageSize = false;
   
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -29,8 +31,13 @@ export class DynamicTableComponent implements OnInit, AfterViewInit {
   }
   
   ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.users);
-    console.log('users: ', this.users)
+    this.dataSource = new MatTableDataSource(this.content);
+    console.log('this.content: ', this.content)
+
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+
   }
 
   ngAfterViewInit() {

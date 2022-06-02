@@ -1,0 +1,18 @@
+
+.table{
+    display: flex;
+    justify-content: center;
+}
+
+app-dynamic-table{
+    width: 80%;
+}
+
+.cards{
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+app-breaking-bad{
+    width: 90%;
+}

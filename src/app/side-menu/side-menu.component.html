@@ -2,11 +2,12 @@
     <mat-drawer #drawer class="example-sidenav"  mode="side" >
       <p>Auto-resizing sidenav</p>
       <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+      <img *ngIf="showFiller" src="{{yoopee}}">
       <button (click)="showFiller = !showFiller" mat-raised-button>
         Toggle extra text
       </button>
     </mat-drawer>
-  
-    <app-home class="home"></app-home>
+    <router-outlet></router-outlet>
+    <!-- <app-home class="home"></app-home> -->
   
   </mat-drawer-container>
