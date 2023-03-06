@@ -11,3 +11,16 @@
 body{
   margin: 0px;
 }
+
+img{
+  max-height: 1rem;
+}
+
+.appName{
+  color: white;
+  margin-left: 10px;
+}
+
+.toolBar{
+  /* background-color:#1c430b; */
+}

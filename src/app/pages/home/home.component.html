@@ -1,6 +1,9 @@
 <div class="table" *ngIf="!!content">
-<app-dynamic-table [displayedColumns]="displayedColumns" [content]="content" [headers]="headers"></app-dynamic-table>
+<app-dynamic-table [displayedColumns]="displayedColumns" [content]="content" [headers]="headers" [customFormGroup]="customForm"></app-dynamic-table>
 </div>
 <div class="cards">
-    <app-breaking-bad (sendTableInfo)="createTableContent($event)"></app-breaking-bad>
+    <app-breaking-bad (sendTableInfo)="createTableContent($event)" (sendFormInfo)="createForm($event)"></app-breaking-bad>
+</div>
+<div class="cards">
+    <app-tabela-fipe></app-tabela-fipe>
 </div>

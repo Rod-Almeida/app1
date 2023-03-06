@@ -1,31 +1,56 @@
-<mat-form-field appearance="standard">
+<ng-container >
+<mat-form-field appearance="standard"  color="primary">
     <mat-label>Procurando alguma coisa?</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="dá uma filtrada aqui..." #input>
 </mat-form-field>
+</ng-container>
+<ng-container *ngIf="genericForm">
+  <mat-paginator [pageSizeOptions]="pageSizeOptions" aria-label="Select page of content"></mat-paginator>
+  <div class="mat-elevation-z8" >
+<form [formGroup]="genericForm">
+    <table mat-table [dataSource]="tableDS" matSort primary>
 
-
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" matSort>
-  
       <!-- ID Column -->
       <div *ngFor="let row of displayedColumns; let iKey = index">
         <ng-container [ngSwitch]="row" >
           <ng-container *ngSwitchCase="'img'"  matColumnDef="{{displayedColumns[iKey]}}" [sticky]="true">
-            <th  mat-header-cell *matHeaderCellDef mat-sort-header > {{headers[iKey]}}  </th>
-            <td mat-cell *matCellDef="let element"><img src="{{element[row]}}">  </td>
+            <th color="primary" mat-header-cell *matHeaderCellDef mat-sort-header > {{headers[iKey]}}  </th>
+            <td mat-cell *matCellDef="let element; let i = index" ><img src="{{element.value.img}}" (click)="console(element)"> </td>
           </ng-container>
 
-        <ng-container *ngSwitchCase="'actions'" matColumnDef="{{displayedColumns[iKey]}}" >
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> action </th>
-          <td mat-cell *matCellDef="let element"> 
-            <span class="material-icons">edit</span>
-            <span class="material-icons">delete</span>
+        <ng-container *ngSwitchCase="'actions'" matColumnDef="{{displayedColumns[iKey]}}" [stickyEnd]="true">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header color="primary"> action </th>
+          <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element"> 
+            <div class="flex">
+
+            <span color="primary" class="material-icons" 
+            (click)="editRow(genericForm, i)" primary
+            *ngIf="genericForm.controls['rows'].value[i].isEditable"
+            >edit</span>
+
+            <span color="primary" class="material-icons"
+            (click)="saveRow(genericForm, i)" primary
+            *ngIf="!genericForm.controls['rows'].value[i].isEditable"
+            >check_circle</span>
+
+            <span color="primary" class="material-icons"
+            (click)="deleteRow(genericForm, i)" primary
+            *ngIf="genericForm.controls['rows'].value[i].isEditable"
+            >delete</span>
+          </div>
           </td>
         </ng-container>
 
         <ng-container *ngSwitchDefault="" matColumnDef="{{displayedColumns[iKey]}}" >
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> {{headers[iKey]}}  </th>
-          <td mat-cell *matCellDef="let element"> {{element[row]}} </td>
+          <th color="primary" mat-header-cell *matHeaderCellDef mat-sort-header> {{headers[iKey]}}  </th>
+          <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">  
+            <mat-form-field [class.displayNone]="genericForm.controls['rows'].value[i].isEditable">
+            <input matInput type="text"
+            [readonly]="genericForm.controls['rows'].value[i].isEditable"
+            [formControlName]="displayedColumns[iKey]"
+            >
+            <mat-hint *ngIf="!genericForm.controls['rows'].value[i].isEditable">preencha em cima</mat-hint>
+          </mat-form-field> </td>
         </ng-container>
 
       </ng-container>
@@ -40,7 +65,7 @@
         <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
       </tr>
     </table>
-  
-    <mat-paginator [pageSizeOptions]="pageSizeOptions" aria-label="Select page of content"></mat-paginator>
+  </form>
   </div>
+</ng-container>
   

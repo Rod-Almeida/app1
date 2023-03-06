@@ -2,7 +2,7 @@
     <div class="filterSection">
 
         <div>
-        <mat-form-field  class="filter" appearance="standard">
+        <mat-form-field  class="filter" appearance="standard" color="primary">
             <mat-label>Procurando alguma coisa?</mat-label>
             <input matInput (input)="filterCharactersList()" placeholder="dá uma filtrada aqui..." #filterInput>
         </mat-form-field>
@@ -22,12 +22,12 @@
                 {{character.status}}
             </p>
             <p *ngFor="let occupation of character.occupation">
-               - {{occupation}}
+            - {{occupation}}
             </p>
             </mat-card-content>
             <mat-card-actions>
-            <button  mat-raised-button color="primary" (click)="delete(i)">Excluir</button>
-            <button  mat-raised-button color="primary">Detalhes</button>
+            <button color="primary" mat-raised-button  (click)="delete(i)">Excluir</button>
+            <button  color="primary" mat-raised-button (click)="goToDetails(i)">Detalhes</button>
             </mat-card-actions>
         </mat-card>
     

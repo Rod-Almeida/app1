@@ -13,4 +13,8 @@ export class BreakingBadService {
       return this.http.get(`${this.API_URL}characters/`);
   }
 
+  getCharacterDetails(id: any) {
+    return this.http.get(`${this.API_URL}characters/${id}`);
+  }
+
 }

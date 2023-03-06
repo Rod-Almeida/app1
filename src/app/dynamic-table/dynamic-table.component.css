@@ -15,11 +15,14 @@ table {
     margin: 10px;
   }
   td, th {
-    min-width: 200px;
+    min-width: 50px;
   }
   
-.paginator{
+.paginator {
   background-color: #d12424
+}
+.flex {
+display: flex;
 }
 
 
@@ -43,3 +46,48 @@ table {
 .material-icons{
   margin-right: 10px;
 }
+
+tr.mat-header-row {
+  /* background-color: #1c430b; */
+  height: 56px;
+  color: white;
+}
+
+/* ::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+/* }  */
+
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  /* background-color: #1c430b !important; */
+} 
+.displayNone ::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    display: none;
+  } 
+
+
+
+/* ::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ /* background-color: #1c430b !important;; */
+/* } */ */
+
+
+
+
+.mat-sort-header-container {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  letter-spacing: normal;
+  outline: 0;
+}
+
+.mat-sort-header-content {
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+

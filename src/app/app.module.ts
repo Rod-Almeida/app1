@@ -19,6 +19,10 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BreakingBadModule } from './pages/breaking-bad/breaking-bad.module';
 import { HttpClientModule } from '@angular/common/http';
+import { DetailsComponent } from './pages/details/details.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TabelaFipeModule } from './pages/tabela-fipe/tabela-fipe.module';
+
 
 @NgModule({
   declarations: [
@@ -27,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     DynamicTableComponent,
     SideMenuComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatSortModule,
     MatSidenavModule,
     BreakingBadModule,
-    HttpClientModule 
+    HttpClientModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    TabelaFipeModule,
   ],
   providers: [],
   bootstrap: [AppComponent], 
